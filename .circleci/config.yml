@@ -1,0 +1,15 @@
+version: 2
+
+jobs:
+  build:
+    working-directory: ~/sonos
+    docker:
+      - image: liuchong/rustup:nightly
+    steps:
+      - checkout
+      - run:
+          name: Update all versions
+          command: "rustup update nightly && rustup update beta && rustup update stable"
+      - run:
+          name: Show toolchain versions
+          command: "rustup show"
