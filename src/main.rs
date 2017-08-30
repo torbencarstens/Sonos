@@ -23,19 +23,11 @@ fn setup_logging(level: log::LogLevelFilter, file: Option<std::path::PathBuf>) -
 
 
     let stderr_dispatcher = fern::Dispatch::new().filter(|data| {
-        match data.level().cmp(&log::LogLevelFilter::Warn.to_log_level().unwrap()) {
-            std::cmp::Ordering::Less => true,
-            std::cmp::Ordering::Equal => true,
-            _ => false
-        }
+        data.level() <= log::LogLevelFilter::Warn
     }).chain(std::io::stderr());
 
     let stdout_dispatcher = fern::Dispatch::new().filter(|data| {
-        match data.level().cmp(&log::LogLevelFilter::Warn.to_log_level().unwrap()) {
-            std::cmp::Ordering::Less => false,
-            std::cmp::Ordering::Equal => false,
-            _ => true
-        }
+        data.level() > log::LogLevelFilter::Warn
     });
 
 
