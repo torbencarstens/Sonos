@@ -43,3 +43,23 @@ fn setup_logging(level: log::LogLevelFilter, file: Option<std::path::PathBuf>) -
 
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use log;
+    use super::setup_logging;
+
+    #[test]
+    fn setup() {
+        assert!(match setup_logging(log::LogLevelFilter::Debug, None) {
+            Ok(_) => true,
+            Err(_) => false
+        });
+        
+        // Only one dispatcher can be registered
+        assert!(match setup_logging(log::LogLevelFilter::Debug, None) {
+            Ok(_) => false,
+            Err(_) => true
+        });
+    }
+}
