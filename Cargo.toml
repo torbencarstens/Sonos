@@ -3,6 +3,15 @@ name = "sonos"
 version = "0.1.0"
 authors = ["chabare <chabare95@gmail.com>"]
 
+[lib]
+name = "sonos"
+path = "src/lib.rs"
+
+[[bin]]
+name = "sonos"
+path = "src/main.rs"
+doc = false
+
 [dependencies]
 sonos_discovery = "0.0.1"
 log = "*"
