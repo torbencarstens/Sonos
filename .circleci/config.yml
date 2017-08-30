@@ -13,3 +13,21 @@ jobs:
       - run:
           name: Show toolchain versions
           command: "rustup show"
+      - run:
+          name: Build on stable
+          command: "rustup run stable cargo build"
+      - run:
+          name: Test on stable
+          command: "rustup run stable cargo test"
+      - run:
+          name: Build on beta
+          command: "rustup run beta cargo build"
+      - run:
+          name: Test on beta
+          command: "rustup run beta cargo test"
+      - run:
+          name: Build on nightly
+          command: "rustup run nightly cargo build"
+      - run:
+          name: Test on nightly
+          command: "rustup run nightly cargo test"
