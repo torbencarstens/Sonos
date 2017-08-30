@@ -11,9 +11,6 @@ jobs:
           name: Update all versions
           command: "rustup update beta && rustup update stable"
       - run:
-          name: Install test-xunit
-          command: "cargo install --git https://github.com/evernym/cargo-test-xunit"
-      - run:
           name: Show toolchain versions
           command: "rustup show"
       - run:
@@ -21,18 +18,18 @@ jobs:
           command: "rustup run stable cargo build"
       - run:
           name: Test on stable
-          command: "rustup run stable cargo test-xunit"
+          command: "rustup run stable cargo test"
       - run:
           name: Build on beta
           command: "rustup run beta cargo build"
       - run:
           name: Test on beta
-          command: "rustup run beta cargo test-xunit"
+          command: "rustup run beta cargo test"
       - run:
           name: Build on nightly
           command: "rustup run nightly cargo build"
       - run:
           name: Test on nightly
-          command: "rustup run nightly cargo test-xunit && echo $pwd && ls"
+          command: "rustup run nightly cargo test-xunit"
       - store_test_results:
           path: ~/sonos/test-results.xml
