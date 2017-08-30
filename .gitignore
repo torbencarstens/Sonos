@@ -4,3 +4,6 @@
 # IDE
 *.iml
 .idea
+
+# Tests
+*.xml
