@@ -5,3 +5,5 @@ authors = ["chabare <chabare95@gmail.com>"]
 
 [dependencies]
 sonos_discovery = "0.0.1"
+log = "*"
+fern = "*"
