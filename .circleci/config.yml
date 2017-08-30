@@ -35,4 +35,4 @@ jobs:
           name: Test on nightly
           command: "rustup run nightly cargo test-xunit"
       - store_test_results:
-          path: "test-results.xml"
+          path: test-results.xml
