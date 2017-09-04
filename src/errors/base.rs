@@ -2,16 +2,17 @@ use std;
 use std::error::Error;
 use std::fmt;
 
+use super::ErrorKind;
 
 #[derive(Debug)]
 pub struct SonosError {
-    description: String
+    error_kind: ErrorKind
 }
 
 impl SonosError {
-    fn new(description: String) -> Self {
+    pub fn new(error_kind: ErrorKind) -> Self {
         SonosError {
-            description: description
+            error_kind: error_kind
         }
     }
 }
@@ -24,12 +25,16 @@ impl std::fmt::Display for SonosError {
 
 impl Error for SonosError {
     fn description(&self) -> &str {
-        self.description.as_str()
+        match self.error_kind {
+            ErrorKind::DiscoveryError(ref description) => description.as_str()
+        }
     }
 }
 
+// From<std::io::Error> only happens when receiving it via `sonos_discovery`.
+// -> We can just use `DiscoveryError` here.
 impl From<std::io::Error> for SonosError {
     fn from(io_error: std::io::Error) -> Self {
-        SonosError::new(io_error.description().to_string())
+        SonosError::new(ErrorKind::DiscoveryError(io_error.description().to_string()))
     }
 }
