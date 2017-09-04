@@ -1,13 +1,14 @@
 #[macro_use]
 extern crate log;
 extern crate fern;
+extern crate sonos;
 
 fn main() {
     let _ = setup_logging(log::LogLevelFilter::Debug, None);
-    debug!("Hey");
-    info!("Hey");
-    warn!("Hey");
-    error!("Hey");
+
+    for ip in sonos::discover(None, Some(3)).unwrap() {
+        info!("IP: {:?}", ip)
+    }
 }
 
 fn setup_logging(level: log::LogLevelFilter, file: Option<std::path::PathBuf>) -> Result<(), fern::InitError> {
@@ -55,7 +56,7 @@ mod tests {
             Ok(_) => true,
             Err(_) => false
         });
-        
+
         // Only one dispatcher can be registered
         assert!(match setup_logging(log::LogLevelFilter::Debug, None) {
             Ok(_) => false,
