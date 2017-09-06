@@ -29,6 +29,6 @@ impl Into<SocketAddr> for Device {
 
 impl fmt::Display for Device {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "[SonosDevice: {}]", self.ip)
+        write!(f, "<SonosDevice: {}>", self.ip)
     }
 }
