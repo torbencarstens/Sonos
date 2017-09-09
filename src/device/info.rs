@@ -5,8 +5,8 @@ use super::futures;
 pub struct DeviceInfo {}
 
 impl DeviceInfo {
-    pub fn new() -> Self {
-        debug!("Creating new DeviceInfo");
+    pub fn empty() -> Self {
+        debug!("Creating empty DeviceInfo");
         DeviceInfo {}
     }
 }

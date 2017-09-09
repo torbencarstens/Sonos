@@ -11,11 +11,11 @@ pub struct Device {
 impl Device {
     pub fn new<T: Into<SocketAddr>>(ip_address: T) -> Self {
         let ip = ip_address.into();
-        debug!("Creating new device with {:?}", ip);
+        debug!("Creating new device with {:?} and empty device info", ip);
 
         Device {
             ip,
-            info: Box::new(DeviceInfo::new())
+            info: Box::new(DeviceInfo::empty())
         }
     }
 }

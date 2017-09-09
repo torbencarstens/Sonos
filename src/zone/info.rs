@@ -5,7 +5,7 @@ use super::futures;
 pub struct ZoneInfo {}
 
 impl ZoneInfo {
-    pub fn new() -> Self {
+    pub fn empty() -> Self {
         debug!("Creating new ZoneInfo");
         ZoneInfo {}
     }
