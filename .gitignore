@@ -6,4 +6,4 @@
 .idea
 
 # Tests
-*.xml
+test-results.xml
