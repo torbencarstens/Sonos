@@ -1,16 +1,21 @@
-use errors;
+use device::DeviceInfo;
 use std::fmt;
 use std::net::SocketAddr;
 
 #[derive(Debug)]
 pub struct Device {
-    ip: SocketAddr
+    ip: SocketAddr,
+    info: Box<DeviceInfo>
 }
 
 impl Device {
     pub fn new<T: Into<SocketAddr>>(ip_address: T) -> Self {
+        let ip = ip_address.into();
+        debug!("Creating new device with {:?}", ip);
+
         Device {
-            ip: ip_address.into()
+            ip,
+            info: Box::new(DeviceInfo::new())
         }
     }
 }
