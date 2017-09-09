@@ -2,6 +2,7 @@ extern crate sonos_discovery;
 
 mod device;
 mod errors;
+mod zone;
 
 use errors::SonosError;
 use sonos_discovery::Discover;
