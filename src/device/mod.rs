@@ -1,3 +1,4 @@
+extern crate futures;
 
 mod device;
 mod info;
