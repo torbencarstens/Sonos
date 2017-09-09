@@ -16,6 +16,7 @@ doc = false
 log = "*"
 fern = "*"
 futures = "*"
+hyper = "*"
 
 [target.'cfg(unix)'.dependencies.sonos_discovery]
 version = "0.0.1"
